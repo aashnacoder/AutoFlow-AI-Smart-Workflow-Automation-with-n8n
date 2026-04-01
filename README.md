@@ -84,10 +84,13 @@ The dashboard shows:
 ## 📸 Screenshots
 
 ### 🔹 n8n Workflow
-![Workflow](screenshots/workflow.png)
+![Workflow](screenshots/workflow.png)<img width="1179" height="432" alt="image" src="https://github.com/user-attachments/assets/b05df4e3-f0bc-4a5d-abfd-88f81da59f83" />
+
+
 
 ### 🔹 Power BI Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.png)<img width="799" height="445" alt="image" src="https://github.com/user-attachments/assets/8f067cf5-b7b1-456e-af74-5314f24223ce" />
+
 
 ---
 
