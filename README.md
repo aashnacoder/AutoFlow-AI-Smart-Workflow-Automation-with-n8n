@@ -47,3 +47,71 @@ ELSE
 
 ## 📂 Project Structure
 
+---
+
+## 🚀 Setup Instructions
+
+### 1. Import Workflow
+- Open n8n
+- Click **Import**
+- Upload `My workflow 2.json`
+
+### 2. Connect Credentials
+- Google Sheets OAuth
+- Gmail OAuth
+
+### 3. Prepare Google Sheet
+Add columns:
+- Employee Name  
+- Email  
+- Number of Leave Days  
+
+### 4. Activate Workflow
+- Turn ON workflow
+- Add new row → automation runs
+
+---
+
+## 📊 Power BI Dashboard
+The dashboard shows:
+- Total Leave Days  
+- Employee-wise Leave Analysis  
+- Leave Trends  
+- Approval vs Rejection  
+
+---
+
+## 📸 Screenshots
+
+### 🔹 n8n Workflow
+![Workflow](screenshots/workflow.png)
+
+### 🔹 Power BI Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🎯 Key Features
+- Automated HR process  
+- Instant email notifications  
+- Rule-based approval system  
+- Real-time data tracking  
+- Interactive dashboard  
+
+---
+
+## 🔮 Future Enhancements
+- Manager approval system  
+- Slack/WhatsApp integration  
+- Leave balance tracking  
+- AI-based predictions  
+
+---
+
+## 👩‍💻 Author
+**Aashna**
+
+---
+
+## ⭐ Support
+If you like this project, give it a ⭐ on GitHub!
