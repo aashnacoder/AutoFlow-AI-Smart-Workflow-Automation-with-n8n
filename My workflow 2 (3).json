@@ -1,0 +1,379 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1ZCO_NPn2BiUM7G-XZ__WwPFjIFAozP2WiEXGWWTn3Ro",
+          "mode": "list",
+          "cachedResultName": "Blank Quiz (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZCO_NPn2BiUM7G-XZ__WwPFjIFAozP2WiEXGWWTn3Ro/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 539159718,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZCO_NPn2BiUM7G-XZ__WwPFjIFAozP2WiEXGWWTn3Ro/edit#gid=539159718"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "70e6dcb2-327a-4086-bcfc-0fc05a4f611d",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "0EWtNNKOVrOg9uZw",
+          "name": "Google Sheets Trigger account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "1e6f289f-52ee-46de-9243-6fc297f1a026",
+              "leftValue": "={{ $json['Number of Leave Days'] }}",
+              "rightValue": 2,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "fcd6da39-1eb9-451f-ab98-b027dbc8ffef",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "=Leave Approved",
+        "message": "=Greetings {{ $json['Employee Name'] }} , Your Leave is Approved.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        -96
+      ],
+      "id": "f864d105-59ec-4e40-bd4f-e66b6fcc0d58",
+      "name": "Send a message",
+      "webhookId": "09eec06b-25ef-4e78-9a3f-7d8d64013b44",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "W3sNgCIw0jGtt005",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "Leave Not Approved",
+        "message": "=Greetings  {{ $json['Employee Name'] }} , Your leave is not Approved.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        96
+      ],
+      "id": "b066725b-56f3-4bba-9457-8efb0f25176f",
+      "name": "Send a message1",
+      "webhookId": "1ddf7703-1ed1-4fe8-9eb5-58c69131f75e",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "BKtyCJRpxC2UdxYC",
+          "name": "Gmail account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "154yHjqUOn242xZvbIEDlzqm3NtELgg83wZTHX8GJHao",
+          "mode": "list",
+          "cachedResultName": "Sheet ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/154yHjqUOn242xZvbIEDlzqm3NtELgg83wZTHX8GJHao/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/154yHjqUOn242xZvbIEDlzqm3NtELgg83wZTHX8GJHao/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('If').item.json['Employee Name'] }}",
+            "Email": "={{ $('If').item.json.Email }}",
+            "Leave Days": "={{ $('If').item.json['Number of Leave Days'] }}",
+            "Status": "Approved",
+            "Date": "08/03/2026 - 10/03/2026"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Leave Days",
+              "displayName": "Leave Days",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        -96
+      ],
+      "id": "cae185d2-279a-4ef9-9fcc-ed2ab64ed378",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "GEUFi5xaAuXDi9Uo",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "154yHjqUOn242xZvbIEDlzqm3NtELgg83wZTHX8GJHao",
+          "mode": "list",
+          "cachedResultName": "Sheet ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/154yHjqUOn242xZvbIEDlzqm3NtELgg83wZTHX8GJHao/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/154yHjqUOn242xZvbIEDlzqm3NtELgg83wZTHX8GJHao/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $('If').item.json['Employee Name'] }}",
+            "Email": "={{ $('If').item.json.Email }}",
+            "Leave Days": "={{ $('If').item.json['Number of Leave Days'] }}",
+            "Status": "Not Approved",
+            "Date": "12/03/2026"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Leave Days",
+              "displayName": "Leave Days",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        96
+      ],
+      "id": "335440d6-237b-47ee-ac31-800260f48b5a",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "GEUFi5xaAuXDi9Uo",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "165fca59-7b6a-442c-9d1d-c319c9426615",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7bad6ffc5235aa454711d4cadaa7dc8441355375b421d4faceaddbc8f713a393"
+  },
+  "id": "tPsGcDO32oJ93a9C",
+  "tags": []
+}
