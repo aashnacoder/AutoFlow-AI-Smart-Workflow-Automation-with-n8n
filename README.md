@@ -1,6 +1,6 @@
-# 🧑‍💼 Automated HR Leave Management System (n8n + Power BI)
+#  Automated HR Leave Management System (n8n + Power BI)
 
-## 📌 Overview
+##  Overview
 This project automates the **HR Leave Management Process** using **n8n**, **Google Sheets**, **Gmail**, and **Power BI**.
 
 It reduces manual work by automatically:
@@ -12,20 +12,20 @@ It reduces manual work by automatically:
 
 ---
 
-## ⚙️ Workflow Architecture
+##  Workflow Architecture
 
-### 🔄 Process Flow
+###  Process Flow
 1. Google Sheets Trigger → Detects new leave entry  
 2. IF Condition → Checks leave days  
 3. Decision:
-   - ✅ ≤ 2 days → Approved  
-   - ❌ > 2 days → Not Approved  
+   - ≤ 2 days → Approved  
+   -  > 2 days → Not Approved  
 4. Gmail → Sends email notification  
 5. Google Sheets → Stores final status  
 
 ---
 
-## 🧠 Workflow Logic
+## Workflow Logic
 
 IF Leave Days ≤ 2  
 → Send "Approved" Email  
@@ -37,7 +37,7 @@ ELSE
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 - **n8n** – Workflow Automation  
 - **Google Sheets** – Data Storage & Trigger  
 - **Gmail API** – Email Notifications  
@@ -45,11 +45,11 @@ ELSE
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### 1. Import Workflow
 - Open n8n
@@ -72,7 +72,7 @@ Add columns:
 
 ---
 
-## 📊 Power BI Dashboard
+##  Power BI Dashboard
 The dashboard shows:
 - Total Leave Days  
 - Employee-wise Leave Analysis  
@@ -81,7 +81,7 @@ The dashboard shows:
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 ### 🔹 n8n Workflow
 ![Workflow](screenshots/workflow.png)<img width="1179" height="432" alt="image" src="https://github.com/user-attachments/assets/b05df4e3-f0bc-4a5d-abfd-88f81da59f83" />
@@ -94,7 +94,7 @@ The dashboard shows:
 
 ---
 
-## 🎯 Key Features
+##  Key Features
 - Automated HR process  
 - Instant email notifications  
 - Rule-based approval system  
@@ -103,7 +103,7 @@ The dashboard shows:
 
 ---
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 - Manager approval system  
 - Slack/WhatsApp integration  
 - Leave balance tracking  
@@ -111,10 +111,10 @@ The dashboard shows:
 
 ---
 
-## 👩‍💻 Author
+##  Author
 **Aashna**
 
 ---
 
-## ⭐ Support
-If you like this project, give it a ⭐ on GitHub!
+##  Support
+If you like this project, give it a  on GitHub!
